@@ -15,7 +15,8 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     @IBOutlet var segmenter: UISegmentedControl!
     @IBOutlet var tableView: UITableView!
     
-    var fetchedResultsController: NSFetchedResultsController<Item>
+    //Tell FRC to operate on the Item Entity/Data Class
+    var fetchedResultsController: NSFetchedResultsController<Item>!
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 0
@@ -27,6 +28,30 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
+    }
+    
+    //Fetch and Display the data
+    func attemptFetch() {
+        
+        //Create a fetch request
+        let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
+        
+        //Sort the data being fetched by date then pass it into the fetchRequest
+        let dateSort = NSSortDescriptor(key: "created", ascending: false)
+        fetchRequest.sortDescriptors = [dateSort]
+        
+        //Instantiate FRC
+        let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        
+        //Perform the fetching
+        do {
+            try controller.performFetch()
+            
+        }catch {
+            let error = error as NSError
+            print("\(error)")
+        }
+        
     }
     
     override func viewDidLoad() {
