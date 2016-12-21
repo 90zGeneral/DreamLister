@@ -43,13 +43,55 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         //Instantiate FRC
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
-        //Perform the fetching
+        //Perform the fetching with the possibility of failing
         do {
             try controller.performFetch()
             
         }catch {
             let error = error as NSError
             print("\(error)")
+        }
+        
+    }
+    
+    //Listen for changes on the tableView and run this method before it does. Similar to tableView.reloadData()
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    //Run after changes are made
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+    
+    //Handles modifications such as insert, move, delete, and update on the tableView
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        //type has 4 incorporated cases
+        switch type {
+        case .insert:
+            if let selectedIndexPath = newIndexPath {
+                tableView.insertRows(at: [selectedIndexPath], with: .fade)
+            }
+            break
+        case .delete:
+            if let selectedIndexPath = indexPath {
+                tableView.deleteRows(at: [selectedIndexPath], with: .fade)
+            }
+            break
+        case .update:
+            if let selectedIndexPath = indexPath {
+                //This case will allow new values so it must be cast/converted to an ItemCell
+                let cell = tableView.cellForRow(at: selectedIndexPath) as! ItemCell
+            }
+        case .move:
+            if let selectedIndexPath = indexPath {
+                tableView.deleteRows(at: [selectedIndexPath], with: .fade)
+            }
+            if let selectedIndexPath = newIndexPath {
+                tableView.insertRows(at: [selectedIndexPath], with: .fade)
+            }
+            break
         }
         
     }
