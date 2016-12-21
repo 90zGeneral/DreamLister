@@ -22,6 +22,7 @@
 		D5FD19DD1E0A0EB100D394E6 /* Store+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD19D51E0A0EB100D394E6 /* Store+CoreDataClass.swift */; };
 		D5FD19DE1E0A0EB100D394E6 /* Store+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD19D61E0A0EB100D394E6 /* Store+CoreDataProperties.swift */; };
 		D5FFA2061E0A283D00D6A251 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FFA2051E0A283D00D6A251 /* MaterialView.swift */; };
+		D5FFA2081E0AEDCC00D6A251 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FFA2071E0AEDCC00D6A251 /* ItemCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		D5FD19D51E0A0EB100D394E6 /* Store+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Store+CoreDataClass.swift"; sourceTree = "<group>"; };
 		D5FD19D61E0A0EB100D394E6 /* Store+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Store+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D5FFA2051E0A283D00D6A251 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
+		D5FFA2071E0AEDCC00D6A251 /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				D5FFA2051E0A283D00D6A251 /* MaterialView.swift */,
+				D5FFA2071E0AEDCC00D6A251 /* ItemCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5FFA2081E0AEDCC00D6A251 /* ItemCell.swift in Sources */,
 				D5FD19DA1E0A0EB100D394E6 /* Item+CoreDataProperties.swift in Sources */,
 				D5FD19D91E0A0EB100D394E6 /* Item+CoreDataClass.swift in Sources */,
 				D5FD19DC1E0A0EB100D394E6 /* ItemType+CoreDataProperties.swift in Sources */,

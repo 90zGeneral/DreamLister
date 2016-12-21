@@ -8,7 +8,7 @@
 
 import UIKit
 
-//
+//Initial state
 private var materialKey = false
 
 extension UIView {
@@ -16,12 +16,13 @@ extension UIView {
     //Something I can toggle inside storyboard on the View with on or off options
     @IBInspectable var materialDesign: Bool {
         
-        //Getters & Setter depending on the state of materialKey
+        //Getter & Setter depending on the state of materialKey
         get {
             return materialKey
         }set {
             materialKey = newValue
             
+            //Toggle on
             if materialKey {
                 self.layer.masksToBounds = false
                 self.layer.cornerRadius = 3.0
@@ -29,7 +30,8 @@ extension UIView {
                 self.layer.shadowRadius = 3.0
                 self.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
                 self.layer.shadowColor = UIColor(red: 157/255, green: 157/255, blue: 157/255, alpha: 1.0).cgColor
-                
+              
+            //Toggle off
             }else {
                 self.layer.cornerRadius = 0
                 self.layer.shadowOpacity = 0
