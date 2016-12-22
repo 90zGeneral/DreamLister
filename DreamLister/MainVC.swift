@@ -15,19 +15,50 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     @IBOutlet var segmenter: UISegmentedControl!
     @IBOutlet var tableView: UITableView!
     
-    //Tell FRC to operate on the Item Entity/Data Class
+    //Declare FRC to operate on the Item Entity/Data Class
     var fetchedResultsController: NSFetchedResultsController<Item>!
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        
+        ////sections will be an [NSFetchedResultsSectionInfo] so just return its count
+        if let sections = fetchedResultsController.sections {
+            return sections.count
+        }
+        
         return 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       
+        ////Grab the sections out of the fetchedResultsController
+        if let sections = fetchedResultsController.sections {
+            let sectionInfo = sections[section]
+            return sectionInfo.numberOfObjects
+        }
+        
         return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ItemCell
+        
+        ////Call the confireCell method and pass in the cell above
+        configureCell(cell: cell, indexPath: indexPath)
+        
+        return cell
+    }
+    
+    ////Configure a cell to be called in the cellForRowAt method
+    func configureCell(cell: ItemCell, indexPath: IndexPath) {
+        
+        ////Create an item to be passed into the mainConfigureCell method
+        let item = fetchedResultsController.object(at: indexPath)
+        cell.mainConfigureCell(item: item)
+    }
+    
+    ////Set a fixed height for each cell. This is the height from the prototype cell in storyboard
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
     }
     
     //Fetch and Display the data
@@ -51,6 +82,9 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
             let error = error as NSError
             print("\(error)")
         }
+        
+        ////Assign controller to fetchedResultsController as its value
+        fetchedResultsController = controller
         
     }
     
@@ -83,6 +117,9 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
             if let selectedIndexPath = indexPath {
                 //This case will allow new values so it must be cast/converted to an ItemCell
                 let cell = tableView.cellForRow(at: selectedIndexPath) as! ItemCell
+                
+                //Call configureCell method
+                configureCell(cell: cell, indexPath: indexPath!)
             }
         case .move:
             if let selectedIndexPath = indexPath {
@@ -102,6 +139,9 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        ////Call
+        attemptFetch()
     }
 
 }
