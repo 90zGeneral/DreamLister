@@ -20,7 +20,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        ////sections will be an [NSFetchedResultsSectionInfo] so just return its count
+        //sections will be an [NSFetchedResultsSectionInfo] so just return its count
         if let sections = fetchedResultsController.sections {
             return sections.count
         }
@@ -30,7 +30,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
-        ////Grab the sections out of the fetchedResultsController
+        //Grab the sections out of the fetchedResultsController
         if let sections = fetchedResultsController.sections {
             let sectionInfo = sections[section]
             return sectionInfo.numberOfObjects
@@ -42,21 +42,21 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ItemCell
         
-        ////Call the confireCell method and pass in the cell above
+        //Call the confireCell method and pass in the cell above
         configureCell(cell: cell, indexPath: indexPath)
         
         return cell
     }
     
-    ////Configure a cell to be called in the cellForRowAt method
+    //Configure a cell to be called in the cellForRowAt method
     func configureCell(cell: ItemCell, indexPath: IndexPath) {
         
-        ////Create an item to be passed into the mainConfigureCell method
+        //Create an item to be passed into the mainConfigureCell method
         let item = fetchedResultsController.object(at: indexPath)
         cell.mainConfigureCell(item: item)
     }
     
-    ////Set a fixed height for each cell. This is the height from the prototype cell in storyboard
+    //Set a fixed height for each cell. This is the height from the prototype cell in storyboard
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
@@ -83,7 +83,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
             print("\(error)")
         }
         
-        ////Assign controller to fetchedResultsController as its value
+        //Assign controller to fetchedResultsController as its value
         fetchedResultsController = controller
         
     }
@@ -133,15 +133,49 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         
     }
     
+    //New instances of the Item Entity
+    func generateTestData() {
+        let newItem1 = Item(context: context)
+        newItem1.title = "Mac Book Pro"
+        newItem1.price = 1700
+        newItem1.details = "New touchbar seems cool but idk how I feel about the no USB ports"
+        
+        let newItem2 = Item(context: context)
+        newItem2.title = "Gulfstream G650"
+        newItem2.price = 65000000
+        newItem2.details = "Can't wait to sail across the world in my very own private jet"
+        
+        let newItem3 = Item(context: context)
+        newItem3.title = "Dingo Bay"
+        newItem3.price = 300000000
+        newItem3.details = "Living in my own personal island couldn't feel any better"
+        
+        let newItem4 = Item(context: context)
+        newItem4.title = "BMW M3"
+        newItem4.price = 85000
+        newItem4.details = "Cruising down the block in my M3"
+        
+        let newItem5 = Item(context: context)
+        newItem5.title = "NY Mansion"
+        newItem5.price = 25000000
+        newItem5.details = "Giving my family and I the home we never had"
+        
+        //Save to Core Data Managed Objects
+        ad.saveContext()
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        //Allow tableView to conform to the protocols and dataSources of the ViewController
         tableView.delegate = self
         tableView.dataSource = self
         
-        ////Call
+        //Call
         attemptFetch()
+        generateTestData()
     }
 
 }

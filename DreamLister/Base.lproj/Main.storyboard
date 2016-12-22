@@ -34,7 +34,7 @@
                                 </segments>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZUp-J9-a4o">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZUp-J9-a4o">
                                 <rect key="frame" x="16" y="132" width="288" height="436"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -43,7 +43,7 @@
                                         <rect key="frame" x="0.0" y="28" width="288" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lOQ-Hr-ghn" id="EAd-NY-RK4">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="149"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nuf-J6-rHj">
@@ -52,8 +52,8 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gulfstreamG650" translatesAutoresizingMaskIntoConstraints="NO" id="7r0-fy-tce">
                                                             <rect key="frame" x="8" y="16.5" width="100" height="100"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="100" id="6K5-8k-f6k"/>
-                                                                <constraint firstAttribute="height" constant="100" id="noK-2G-bXQ"/>
+                                                                <constraint firstAttribute="height" constant="100" id="RPW-pL-4Wy"/>
+                                                                <constraint firstAttribute="width" constant="100" id="qWe-fk-flh"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gulfstream G650" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fd-wx-h9Z">
@@ -91,8 +91,10 @@
                                                         <constraint firstAttribute="trailing" secondItem="lTU-A3-gGg" secondAttribute="trailing" constant="8" id="78h-1F-JbV"/>
                                                         <constraint firstItem="8fd-wx-h9Z" firstAttribute="top" secondItem="nuf-J6-rHj" secondAttribute="top" constant="8" id="Ehl-an-R2J"/>
                                                         <constraint firstItem="XCj-8W-luZ" firstAttribute="top" secondItem="8fd-wx-h9Z" secondAttribute="bottom" constant="8" id="Xgf-ok-22H"/>
+                                                        <constraint firstItem="7r0-fy-tce" firstAttribute="top" secondItem="nuf-J6-rHj" secondAttribute="top" constant="16.5" id="akj-lX-pG1"/>
                                                         <constraint firstAttribute="bottom" secondItem="lTU-A3-gGg" secondAttribute="bottom" constant="8" id="dAZ-bD-Vsd"/>
                                                         <constraint firstItem="7r0-fy-tce" firstAttribute="leading" secondItem="nuf-J6-rHj" secondAttribute="leading" constant="8" id="dTU-S4-HxJ"/>
+                                                        <constraint firstAttribute="bottom" secondItem="7r0-fy-tce" secondAttribute="bottom" constant="16.5" id="dg5-JL-bHR"/>
                                                         <constraint firstItem="lTU-A3-gGg" firstAttribute="top" secondItem="XCj-8W-luZ" secondAttribute="bottom" constant="8" id="giW-gB-neq"/>
                                                         <constraint firstItem="8fd-wx-h9Z" firstAttribute="leading" secondItem="7r0-fy-tce" secondAttribute="trailing" constant="8" id="hWD-Mt-crM"/>
                                                         <constraint firstAttribute="trailing" secondItem="8fd-wx-h9Z" secondAttribute="trailing" constant="8" id="i8l-Lj-9vF"/>

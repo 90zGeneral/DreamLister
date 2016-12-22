@@ -20,7 +20,7 @@ class ItemCell: UITableViewCell {
         
         ////Set the outlets to the properties of the Item Entity
         itemName.text = item.title
-        itemPrice.text = "$\(item.price)"
+        itemPrice.text = "$\(Int(item.price))"
         itemDescription.text = item.details
         
     }
