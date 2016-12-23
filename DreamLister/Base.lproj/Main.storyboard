@@ -47,7 +47,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nuf-J6-rHj">
-                                                    <rect key="frame" x="8" y="8" width="272" height="133"/>
+                                                    <rect key="frame" x="8" y="8" width="272" height="122.5"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gulfstreamG650" translatesAutoresizingMaskIntoConstraints="NO" id="7r0-fy-tce">
                                                             <rect key="frame" x="8" y="16.5" width="100" height="100"/>
@@ -57,28 +57,19 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gulfstream G650" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fd-wx-h9Z">
-                                                            <rect key="frame" x="116" y="8" width="148" height="23"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="23" id="Yb4-ir-Hcg"/>
-                                                            </constraints>
+                                                            <rect key="frame" x="116" y="8" width="148" height="19.5"/>
                                                             <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="17"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$65,000,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCj-8W-luZ">
-                                                            <rect key="frame" x="116" y="39" width="148" height="23"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="23" id="sos-j8-s1q"/>
-                                                            </constraints>
+                                                            <rect key="frame" x="116" y="35.5" width="148" height="19.5"/>
                                                             <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="17"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By age 40, I will be sailing across the world in this private jet" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lTU-A3-gGg">
-                                                            <rect key="frame" x="116" y="70" width="148" height="55"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="55" id="aB1-id-CqM"/>
-                                                            </constraints>
+                                                            <rect key="frame" x="116" y="63" width="148" height="51.5"/>
                                                             <fontDescription key="fontDescription" name="Baskerville" family="Baskerville" pointSize="15"/>
                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -87,7 +78,6 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="XCj-8W-luZ" secondAttribute="trailing" constant="8" id="12K-Gz-pQI"/>
-                                                        <constraint firstItem="7r0-fy-tce" firstAttribute="centerY" secondItem="nuf-J6-rHj" secondAttribute="centerY" id="4i2-FY-0Vo"/>
                                                         <constraint firstAttribute="trailing" secondItem="lTU-A3-gGg" secondAttribute="trailing" constant="8" id="78h-1F-JbV"/>
                                                         <constraint firstItem="8fd-wx-h9Z" firstAttribute="top" secondItem="nuf-J6-rHj" secondAttribute="top" constant="8" id="Ehl-an-R2J"/>
                                                         <constraint firstItem="XCj-8W-luZ" firstAttribute="top" secondItem="8fd-wx-h9Z" secondAttribute="bottom" constant="8" id="Xgf-ok-22H"/>
