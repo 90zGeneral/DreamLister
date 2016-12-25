@@ -23,6 +23,7 @@
 		D5FD19DE1E0A0EB100D394E6 /* Store+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FD19D61E0A0EB100D394E6 /* Store+CoreDataProperties.swift */; };
 		D5FFA2061E0A283D00D6A251 /* MaterialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FFA2051E0A283D00D6A251 /* MaterialView.swift */; };
 		D5FFA2081E0AEDCC00D6A251 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FFA2071E0AEDCC00D6A251 /* ItemCell.swift */; };
+		D5FFA20A1E10611E00D6A251 /* ItemDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5FFA2091E10611E00D6A251 /* ItemDetailsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		D5FD19D61E0A0EB100D394E6 /* Store+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Store+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		D5FFA2051E0A283D00D6A251 /* MaterialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialView.swift; sourceTree = "<group>"; };
 		D5FFA2071E0AEDCC00D6A251 /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		D5FFA2091E10611E00D6A251 /* ItemDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				D5FD19781E09D4F500D394E6 /* MainVC.swift */,
+				D5FFA2091E10611E00D6A251 /* ItemDetailsVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				D5FD19791E09D4F500D394E6 /* MainVC.swift in Sources */,
 				D5FD19DE1E0A0EB100D394E6 /* Store+CoreDataProperties.swift in Sources */,
 				D5FD19D81E0A0EB100D394E6 /* Image+CoreDataProperties.swift in Sources */,
+				D5FFA20A1E10611E00D6A251 /* ItemDetailsVC.swift in Sources */,
 				D5FD19DB1E0A0EB100D394E6 /* ItemType+CoreDataClass.swift in Sources */,
 				D5FD19771E09D4F500D394E6 /* AppDelegate.swift in Sources */,
 				D5FD19DD1E0A0EB100D394E6 /* Store+CoreDataClass.swift in Sources */,
