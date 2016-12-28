@@ -14,6 +14,12 @@ class ItemDetailsVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        //To remove the navigation bar button title "DreamLister" when the ItemDetailsVC loads
+        if let topItem = self.navigationController?.navigationBar.topItem {
+            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        }
+        
     }
     
 
