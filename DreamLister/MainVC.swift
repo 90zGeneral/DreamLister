@@ -135,33 +135,33 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
     
     //New instances of the Item Entity
     func generateTestData() {
-        let newItem1 = Item(context: context)
-        newItem1.title = "Mac Book Pro"
-        newItem1.price = 1700
-        newItem1.details = "New touchbar seems cool but idk how I feel about the no USB ports"
-        
-        let newItem2 = Item(context: context)
-        newItem2.title = "Gulfstream G650"
-        newItem2.price = 65000000
-        newItem2.details = "Can't wait to sail across the world in my very own private jet"
-        
-        let newItem3 = Item(context: context)
-        newItem3.title = "Dingo Bay"
-        newItem3.price = 300000000
-        newItem3.details = "Living in my own personal island couldn't feel any better"
-        
-        let newItem4 = Item(context: context)
-        newItem4.title = "BMW M3"
-        newItem4.price = 85000
-        newItem4.details = "Cruising down the block in my M3"
-        
-        let newItem5 = Item(context: context)
-        newItem5.title = "NY Mansion"
-        newItem5.price = 25000000
-        newItem5.details = "Giving my family and I the home we never had"
-        
-        //Save to Core Data Managed Objects
-        ad.saveContext()
+//        let newItem1 = Item(context: context)
+//        newItem1.title = "Mac Book Pro"
+//        newItem1.price = 1700
+//        newItem1.details = "New touchbar seems cool but idk how I feel about the no USB ports"
+//        
+//        let newItem2 = Item(context: context)
+//        newItem2.title = "Gulfstream G650"
+//        newItem2.price = 65000000
+//        newItem2.details = "Can't wait to sail across the world in my very own private jet"
+//        
+//        let newItem3 = Item(context: context)
+//        newItem3.title = "Dingo Bay"
+//        newItem3.price = 300000000
+//        newItem3.details = "Living in my own personal island couldn't feel any better"
+//        
+//        let newItem4 = Item(context: context)
+//        newItem4.title = "BMW M3"
+//        newItem4.price = 85000
+//        newItem4.details = "Cruising down the block in my M3"
+//        
+//        let newItem5 = Item(context: context)
+//        newItem5.title = "NY Mansion"
+//        newItem5.price = 25000000
+//        newItem5.details = "Giving my family and I the home we never had"
+//        
+//        //Save to Core Data Managed Objects
+//        ad.saveContext()
         
     }
     
@@ -174,8 +174,8 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         tableView.dataSource = self
         
         //Call
-        attemptFetch()
         generateTestData()
+        attemptFetch()
     }
 
 }
