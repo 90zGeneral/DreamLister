@@ -96,7 +96,7 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         storePicker.delegate = self
         storePicker.dataSource = self
         
-        //Call function
+        //Call functions
         testStores()
         getStores()
         
