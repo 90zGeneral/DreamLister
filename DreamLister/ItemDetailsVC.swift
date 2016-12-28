@@ -8,8 +8,36 @@
 
 import UIKit
 
-class ItemDetailsVC: UIViewController {
-
+class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    @IBOutlet weak var storePicker: UIPickerView!
+    @IBOutlet weak var titleField: CustomTextField!
+    @IBOutlet weak var priceField: CustomTextField!
+    @IBOutlet weak var detailsField: CustomTextField!
+    
+    var stores = [Store]()
+    
+    //How many columns in the pickerView
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    //How many rows in a pickerView column
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return stores.count
+    }
+    
+    //The title for each row
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        let store = stores[row]
+        return store.name
+    }
+    
+    //Which row was selected by the user
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        <#code#>
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,17 +48,9 @@ class ItemDetailsVC: UIViewController {
             topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         }
         
+        storePicker.delegate = self
+        storePicker.dataSource = self
+        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
