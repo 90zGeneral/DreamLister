@@ -48,6 +48,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         return cell
     }
     
+    //A specific row to be selected
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         //Check if an array of Item exist and assign it to objs only if there is atleast 1 item in the array

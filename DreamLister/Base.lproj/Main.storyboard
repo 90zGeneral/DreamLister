@@ -258,6 +258,9 @@
                     <navigationItem key="navigationItem" title="Add/Edit" id="Sv2-pD-GVR">
                         <barButtonItem key="rightBarButtonItem" systemItem="trash" id="anA-xB-Y6H">
                             <color key="tintColor" red="0.75755602899999996" green="0.06143416375" blue="0.097980154070000006" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="deleteItem:" destination="8eC-HB-Jx7" id="zEf-IH-CDn"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>

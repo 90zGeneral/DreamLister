@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     //Outlets
     @IBOutlet weak var storePicker: UIPickerView!
@@ -22,6 +22,9 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     
     //Item to be edited
     var itemToEdit: Item?
+    
+    //
+    var imagePicker: UIImagePickerController!
     
     //How many columns in the pickerView
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -129,15 +132,21 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         //Prevents the user from leaving any of the textFields blank
         if titleField.text != "" && priceField.text != "" && detailsField.text != "" {
             
+            //Its value depends on the value of itemToEdit
             var newItem: Item!
             
             if itemToEdit == nil {
-            //Create a new item and set its title, price, and details to the values entered in the textFields
+                
+                //Create a new item
                 newItem = Item(context: context)
+                
             }else {
+                
+                //Assign itemToEdit's value to newItem
                 newItem = itemToEdit
             }
             
+            //Set newItem's title, price, and details to the values entered in the textFields
             if let userTitle = titleField.text {
                 newItem.title = userTitle
             }
@@ -159,6 +168,19 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         }
         
     }
+    
+    //To delete an existing item
+    @IBAction func deleteItem(_ sender: UIBarButtonItem) {
+        
+        if itemToEdit != nil {
+            context.delete(itemToEdit!)
+            ad.saveContext()
+        }
+        
+        //Return to the MainVC
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
     
     
     override func viewDidLoad() {
