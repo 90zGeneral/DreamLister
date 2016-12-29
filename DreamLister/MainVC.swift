@@ -48,6 +48,30 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        //Check if an array of Item exist and assign it to objs only if there is atleast 1 item in the array
+        if let objs = fetchedResultsController.fetchedObjects, objs.count > 0 {
+            
+            //Grab the selected Item in the objs array
+            let selectedItem = objs[indexPath.row]
+            
+            //Segue to the ItemDetailsVC with the selectedItem
+            performSegue(withIdentifier: "ItemDetails", sender: selectedItem)
+        }
+    }
+    
+    //Prepare the segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ItemDetails" {
+            if let destination = segue.destination as? ItemDetailsVC {
+                if let item = sender as? Item {
+                    destination.itemToEdit = item
+                }
+            }
+        }
+    }
+    
     //Configure a cell to be called in the cellForRowAt method
     func configureCell(cell: ItemCell, indexPath: IndexPath) {
         

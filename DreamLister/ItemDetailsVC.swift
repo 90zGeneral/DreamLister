@@ -20,6 +20,9 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     //Array of all the stores
     var stores = [Store]()
     
+    //Item to be edited
+    var itemToEdit: Item?
+    
     //How many columns in the pickerView
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -81,6 +84,43 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
 //        
 //        //Save the new stores in CoreData
 //        ad.saveContext()
+        
+    }
+    
+    //To edit an exisiting Item
+    func loadItemData() {
+        
+        if let item = itemToEdit {
+            
+            //Assign the stored values to the textFields
+            titleField.text = item.title
+            priceField.text = "\(item.price)"
+            detailsField.text = item.details
+            
+            //To set the pickerView value to the item's pre-existing store
+            if let store = item.toStore {
+                var index = 0
+                
+                //Loop thru each Store in the stores array
+                repeat {
+            
+                    //Create a store variable and check for a match with the item's store
+                    let s = stores[index]
+                    if s.name == store.name {
+                        
+                        storePicker.selectRow(index, inComponent: 0, animated: false)
+                        
+                        //Exit the loop if the store is found before the condition turns false
+                        break
+                    }
+                    
+                    //Increment the index each time the stores does not match
+                    index += 1
+                
+                //Condition for running the loop
+                }while (index < stores.count)
+            }
+        }
     }
     
     //Save item
@@ -89,8 +129,14 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         //Prevents the user from leaving any of the textFields blank
         if titleField.text != "" && priceField.text != "" && detailsField.text != "" {
             
+            var newItem: Item!
+            
+            if itemToEdit == nil {
             //Create a new item and set its title, price, and details to the values entered in the textFields
-            let newItem = Item(context: context)
+                newItem = Item(context: context)
+            }else {
+                newItem = itemToEdit
+            }
             
             if let userTitle = titleField.text {
                 newItem.title = userTitle
@@ -131,6 +177,12 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         //Call functions
         testStores()
         getStores()
+        
+        
+        /* Had to move this conditional statement out of the testScores method bcuz loadItemData can't be called b4 getStores since getStores will populate the stores array. */
+        if itemToEdit != nil {
+            loadItemData()
+        }
         
     }
 
