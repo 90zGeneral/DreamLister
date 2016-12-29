@@ -74,6 +74,9 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         //Instantiate FRC
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
+        //This controller must listen for the changes on the VC in order to update
+        controller.delegate = self
+        
         //Perform the fetching with the possibility of failing
         do {
             try controller.performFetch()
