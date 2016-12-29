@@ -86,27 +86,31 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     //Save item
     @IBAction func saveItem(_ sender: UIButton) {
         
-        //Create a new item and set its title, price, and details to the values entered in the textFields
-        let newItem = Item(context: context)
-        
-        if let userTitle = titleField.text {
-            newItem.title = userTitle
+        //Prevents the user from leaving any of the textFields blank
+        if titleField.text != "" && priceField.text != "" && detailsField.text != "" {
+            
+            //Create a new item and set its title, price, and details to the values entered in the textFields
+            let newItem = Item(context: context)
+            
+            if let userTitle = titleField.text {
+                newItem.title = userTitle
+            }
+            if let userPrice = priceField.text {
+                newItem.price = Double(userPrice)!
+            }
+            if let userDetails = detailsField.text {
+                newItem.details = userDetails
+            }
+            
+            //Assign the selected store to the newly created store
+            newItem.toStore = stores[storePicker.selectedRow(inComponent: 0)]
+            
+            //Save the new store to CoreData
+            ad.saveContext()
+            
+            //Segue back to the MainVC
+            _ = navigationController?.popViewController(animated: true)
         }
-        if let userPrice = priceField.text {
-            newItem.price = Double(userPrice)!
-        }
-        if let userDetails = detailsField.text {
-            newItem.details = userDetails
-        }
-        
-        //Assign the selected store to the newly created store
-        newItem.toStore = stores[storePicker.selectedRow(inComponent: 0)]
-        
-        //Save the new store to CoreData
-        ad.saveContext()
-        
-        //Segue back to the MainVC
-        _ = navigationController?.popViewController(animated: true)
         
     }
     
