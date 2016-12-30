@@ -92,9 +92,19 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         //Create a fetch request
         let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
         
-        //Sort the data being fetched by date then pass it into the fetchRequest
+        //Sort the data being fetched by date, price, and title
         let dateSort = NSSortDescriptor(key: "created", ascending: false)
-        fetchRequest.sortDescriptors = [dateSort]
+        let priceSort = NSSortDescriptor(key: "price", ascending: true)
+        let titleSort = NSSortDescriptor(key: "title", ascending: true)
+        
+        //Display sorted data based on the selected index
+        if segmenter.selectedSegmentIndex == 0 {
+            fetchRequest.sortDescriptors = [dateSort]
+        }else if segmenter.selectedSegmentIndex == 1 {
+            fetchRequest.sortDescriptors = [priceSort]
+        }else {
+            fetchRequest.sortDescriptors = [titleSort]
+        }
         
         //Instantiate FRC
         let controller = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
@@ -115,6 +125,14 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         fetchedResultsController = controller
         
     }
+    
+    //Call attemptFetch whenever segment changes and reload tableView
+    @IBAction func segmentChanged(_ sender: UISegmentedControl) {
+        attemptFetch()
+        tableView.reloadData()
+    }
+    
+    
     
     //Listen for changes on the tableView and run this method before it does. Similar to tableView.reloadData()
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {

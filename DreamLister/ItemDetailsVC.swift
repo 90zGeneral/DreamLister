@@ -206,6 +206,7 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
             itemImage.image = img
         }
         
+        //Dismiss atfer an image has been selected
         imagePicker.dismiss(animated: true, completion: nil)
     }
     
