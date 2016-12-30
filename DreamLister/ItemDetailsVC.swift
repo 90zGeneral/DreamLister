@@ -16,6 +16,8 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     @IBOutlet weak var titleField: CustomTextField!
     @IBOutlet weak var priceField: CustomTextField!
     @IBOutlet weak var detailsField: CustomTextField!
+    @IBOutlet weak var itemImage: UIImageView!
+    
     
     //Array of all the stores
     var stores = [Store]()
@@ -100,6 +102,9 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
             priceField.text = "\(item.price)"
             detailsField.text = item.details
             
+            //Assign the item image to the imageView
+            itemImage.image = item.toImage?.image as? UIImage
+            
             //To set the pickerView value to the item's pre-existing store
             if let store = item.toStore {
                 var index = 0
@@ -135,6 +140,10 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
             //Its value depends on the value of itemToEdit
             var newItem: Item!
             
+            //Create a new instance of Image and set its image value to the itemImage value
+            let picture = Image(context: context)
+            picture.image = itemImage.image
+            
             if itemToEdit == nil {
                 
                 //Create a new item
@@ -145,6 +154,9 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
                 //Assign itemToEdit's value to newItem
                 newItem = itemToEdit
             }
+            
+            //Assign the newItem Entity to the picture Entity
+            newItem.toImage = picture
             
             //Set newItem's title, price, and details to the values entered in the textFields
             if let userTitle = titleField.text {
@@ -181,7 +193,21 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         _ = navigationController?.popViewController(animated: true)
     }
     
+    //Add a new image to an item
+    @IBAction func addImage(_ sender: UIButton) {
+        
+        //Present the image picker controller
+        present(imagePicker, animated: true, completion: nil)
+    }
     
+    //Extracting the image and assigning it to the outlet
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let img = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            itemImage.image = img
+        }
+        
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -193,8 +219,13 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
             topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         }
         
+        //Set the delegates
         storePicker.delegate = self
         storePicker.dataSource = self
+        
+        //Instantite the imagePicker and set the delegate
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
         
         //Call functions
         testStores()

@@ -168,6 +168,9 @@
                                     <constraint firstAttribute="width" constant="100" id="5NM-ix-ou8"/>
                                     <constraint firstAttribute="height" constant="100" id="snl-kr-m5m"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="addImage:" destination="8eC-HB-Jx7" eventType="touchUpInside" id="asB-k5-Itd"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lOz-wt-ORF" customClass="CustomTextField" customModule="DreamLister" customModuleProvider="target">
                                 <rect key="frame" x="124" y="88" width="180" height="30"/>
@@ -265,6 +268,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="detailsField" destination="InK-Hn-QDn" id="r3d-5b-vRL"/>
+                        <outlet property="itemImage" destination="tJU-ZN-ZTz" id="IoB-ou-7mF"/>
                         <outlet property="priceField" destination="RDf-Gs-Ubx" id="bqr-k4-vc7"/>
                         <outlet property="storePicker" destination="5Ng-qk-slV" id="c1C-PB-eID"/>
                         <outlet property="titleField" destination="lOz-wt-ORF" id="trJ-B4-Uzr"/>

@@ -22,6 +22,7 @@ class ItemCell: UITableViewCell {
         itemName.text = item.title
         itemPrice.text = "$\(Int(item.price))"
         itemDescription.text = item.details
+        itemImage.image = item.toImage?.image as? UIImage
         
     }
     
