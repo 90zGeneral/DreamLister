@@ -96,14 +96,18 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFe
         let dateSort = NSSortDescriptor(key: "created", ascending: false)
         let priceSort = NSSortDescriptor(key: "price", ascending: true)
         let titleSort = NSSortDescriptor(key: "title", ascending: true)
+        let typeSort = NSSortDescriptor(key: "details", ascending: true)
         
         //Display sorted data based on the selected index
         if segmenter.selectedSegmentIndex == 0 {
             fetchRequest.sortDescriptors = [dateSort]
         }else if segmenter.selectedSegmentIndex == 1 {
             fetchRequest.sortDescriptors = [priceSort]
-        }else {
+        }else if segmenter.selectedSegmentIndex == 2 {
             fetchRequest.sortDescriptors = [titleSort]
+        }
+        else if segmenter.selectedSegmentIndex == 3 {
+            fetchRequest.sortDescriptors = [typeSort]
         }
         
         //Instantiate FRC
