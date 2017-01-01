@@ -102,8 +102,12 @@ class ItemDetailsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
             priceField.text = "\(item.price)"
             detailsField.text = item.details
             
-            //Assign the item image to the imageView
-            itemImage.image = item.toImage?.image as? UIImage
+            //If an item has the default image value, then assign imagePick as the item's image when ItemDetailsVC appears
+            if item.toImage == nil {
+                itemImage.image = UIImage(named: "imagePick")
+            }else {
+                itemImage.image = item.toImage?.image as? UIImage
+            }
             
             //To set the pickerView value to the item's pre-existing store
             if let store = item.toStore {
